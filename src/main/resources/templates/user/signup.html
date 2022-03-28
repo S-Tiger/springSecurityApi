@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+
+    <h1 class="page-header">회원 가입</h1>
+    <div>
+        <form id="signupform" th:action="@{/user/signup}" method="post"> <!-- th:action을 사용하면 csrf토큰 값을 자동으로 추가해준다-->
+            <div class="form-group">
+                <label for="userEmail">이메일</label>
+                <input type="text" class="form-control" id="userEmail" name="userEmail" placeholder="이메일 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label for="userPwd">비밀번호</label>
+                <input type="password" class="form-control" id="userPwd" name="userPwd" placeholder="비밀번호를 입력해주세요">
+            </div>
+            <div class="form-group">
+                <label for="confirmPwd">비밀번호확인</label>
+                <input type="password" class="form-control" id="confirmPwd" name="confirmPwd" placeholder="비밀번호를 재입력해주세요">
+            </div>
+            <div class="form-group">
+                <label for="userName">이름</label>
+                <input type="text" class="form-control" id="userName" name="userName" placeholder="이름을 입력하세요"/>
+            </div>
+            <a href="/" role="button" class="btn btn-secondary">취소</a>
+            <a role="button" onclick="signup()" class="btn btn-primary">가입</a>
+        </form>
+    </div>
+
+</th:block>
+</html>
+<script src="/js/member.js"></script>

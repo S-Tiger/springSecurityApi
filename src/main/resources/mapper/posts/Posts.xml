@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.lms.mapper.PostsMapper">
+
+    <select id="selectPostsList" parameterType="study.lms.domain.posts.PostsRequestDto"
+            resultType="study.lms.domain.posts.PostsResponseDto">
+        SELECT POSTS_NUM
+            , POSTS_TITLE
+            , POSTS_CONTENT
+            , POSTS_AUTHOR
+            , CREATE_DATE
+            , MODIFIED_DATE
+        FROM POSTS
+        <where>
+            <if test='postsNum != null and postsNum != ""'>
+                AND POSTS_NUM = #{postsNum}
+            </if>
+            <if test='postsTitle != null and postsTitle != ""'>
+                AND POSTS_TITLE = #{postsTitle}
+            </if>
+            <if test='postsContent != null and postsContent != ""'>
+                AND POSTS_AUTHOR = #{postsContent}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertPosts" parameterType="study.lms.domain.posts.PostsRequestDto" useGeneratedKeys="true"
+            keyProperty="postsNum">
+        INSERT INTO POSTS ( POSTS_TITLE
+                          , POSTS_CONTENT
+                          , POSTS_AUTHOR
+                          , CREATE_DATE
+                          , MODIFIED_DATE)
+        VALUES ( #{postsTitle}
+               , #{postsContent}
+               , #{postsAuthor}
+               , NOW()
+               , NOW())
+    </insert>
+
+    <select id="selectPosts" parameterType="long"
+            resultType="study.lms.domain.posts.PostsResponseDto">
+        SELECT POSTS_NUM
+            , POSTS_TITLE
+            , POSTS_CONTENT
+            , POSTS_AUTHOR
+            , CREATE_DATE
+            , MODIFIED_DATE
+        FROM POSTS
+        WHERE POSTS_NUM = #{postsNum}
+    </select>
+
+</mapper>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+
+    <h1 class="page-header">게시글 목록</h1>
+    <div>
+        <table>
+            <tbody>
+            <tr>
+                <td><p>제목</p></td>
+                <td><p th:text="${posts.postsTitle}"></p></td>
+            </tr>
+            <tr>
+                <td><p>작성자</p></td>
+                <td><p th:text="${posts.postsAuthor}"></p></td>
+            </tr>
+            <tr>
+                <td><p>내용</p></td>
+                <td><p th:text="${posts.postsContent}"></p></td>
+            </tr>
+            </tbody>
+        </table>
+        <button onclick="postsList()">목록</button><button onclick="postsDelete()">삭제</button>
+    </div>
+
+</th:block>
+</body>
+<script th:inline="javascript">
+    function postsList(){
+        console.log('목록');
+    }
+    function postsDelete(){
+        console.log('삭제');
+    }
+</script>
+</html>

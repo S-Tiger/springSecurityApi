@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lagn="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8">
+        <title>스터디</title>
+        <!-- 공통css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+        <style>
+            html,
+
+            .contents-wrap {
+                min-height:100%;
+                position:relative;
+                padding-bottom:100px;/* footer height */
+            }
+            .footer {
+                left:0;
+                height:100px;
+                position:absolute;
+                bottom:0;
+                background:#5eaeff;
+                text-align: center;
+                color: white;
+                width:100%
+            }
+        </style>
+    </head>
+
+<body>
+
+<!-- 공통 헤더-->
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
+
+<div class="container-fluid">
+
+    <div class="row" style="margin-top: 40px">
+    <!-- 사이드바-->
+    <div class="col-sm-3 col-md-2 sidebar" style="margin-top: 30px">
+            <th:block th:replace="fragment/sidebar :: sidebarFragment"></th:block>
+    </div>
+        <!-- 본문-->
+        <div class ="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="float: none;">
+            <th:block layout:fragment="content"></th:block>
+
+        </div>
+    </div>
+        <!-- 공통 하단-->
+        <footer class="footer">
+            <div class="container">
+            <th:block th:replace="fragment/footer :: footerFragment"></th:block>
+            </div>
+        </footer>
+
+
+
+</div>
+
+<!-- 공통 스크립트-->
+<th:block th:replace="fragment/config :: configFragment"></th:block>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lagn="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<style>
+
+</style>
+
+<!--headerFragment 선언-->
+<th:block th:fragment="headerFragment">
+
+    <!-- Topbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">스터디Home</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a sec:authorize = "isAnonymous()" th:href="@{/user/login}">로그인</a></li>
+                    <li><a sec:authorize = "isAuthenticated()" th:href="@{/user/logout}">로그아웃</a></li>
+                    <li><a sec:authorize="isAnonymous()" th:href="@{/user/signup}">회원가입</a></li>
+                    <li><a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/userInfo}">내정보</a></li>
+                    <li><a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">관리자</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <input type="text" class="form-control" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+
+    </nav>
+    <!-- End of Topbar -->
+</th:block>
+</html>

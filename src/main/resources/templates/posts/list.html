@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+
+    <h1 class="page-header">게시글 목록</h1>
+    <div>
+        <table>
+            <colgroup>
+                <col style="width:80px">
+                <col style="width:50%">
+                <col style="width:90px">
+                <col style="width:90px">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="posts : ${posts}">
+                <td th:text="${posts.postsNum}"></td>
+                <td><a th:href="@{'/posts/detail/'+${posts.postsNum}}" th:text="${posts.postsTitle}"></a></td>
+                <td th:text="${posts.postsAuthor}"></td>
+                <td th:text="${posts.createDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/posts/write" role="button" class="btn btn-primary">글 등록</a>
+    </div>
+
+</th:block>
+</body>
+</html>

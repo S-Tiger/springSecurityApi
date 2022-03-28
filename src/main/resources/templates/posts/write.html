@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<th:block layout:fragment="content">
+
+    <h1 class="page-header">게시글 목록</h1>
+    <div>
+        <form method="post" th:action="@{/posts/write}">
+        <table>
+            <tbody>
+            <tr>
+                <td><p>제목</p></td><td><input type="text" name="postsTitle" placeholder="제목을 입력해주세요"></input></td>
+            </tr>
+            <tr>
+                <td><p>작성자</p></td><td><input type="text" name="postsAuthor" placeholder="작성자를 입력해주세요"></input></td>
+            </tr>
+            <tr>
+                <td><p>내용</p></td><td><textarea name="postsContent" placeholder="내용을 입력해주세요"></textarea></td>
+            </tr>
+            </tbody>
+        </table>
+            <button type="submit">게시글 등록</button>
+        </form>
+    </div>
+
+</th:block>
+</body>
+</html>
